@@ -1,3 +1,4 @@
+require "prawn"
 require "prawn/component/version"
 
 module Prawn

@@ -16,6 +16,12 @@ module Prawn
           define_method("test_#{name}".gsub(/\W/, "_"), &block)
         end
       end
+
+      def assert_document_includes document, string
+        output = PDF::Inspector::Text.analyze(document.render)
+
+        assert_includes output.strings, string
+      end
     end
   end
 end

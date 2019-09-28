@@ -1,7 +1,7 @@
 require "minitest/autorun"
 
 module Prawn
-  module Component
+  class Component
     class TestCase < MiniTest::Test
       class << self
         def setup(&block)

@@ -1,5 +1,6 @@
 require "prawn"
 require "prawn/component/version"
+require "prawn/component/interface"
 
 module Prawn
   class Component

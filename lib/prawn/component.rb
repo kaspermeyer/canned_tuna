@@ -12,7 +12,7 @@ module Prawn
       end
     end
 
-    def render_in pdf, &block
+    def draw_in pdf, &block
       pdf.instance_exec(self, (block || proc {}), &self.class.template)
     end
   end

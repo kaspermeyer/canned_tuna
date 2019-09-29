@@ -22,7 +22,7 @@ class ComponentTest < Prawn::Component::TestCase
       end
     end
 
-    BasicComponent.new.render_in(@document)
+    BasicComponent.new.draw_in(@document)
 
     assert_document_includes @document, "Basic"
   end
@@ -40,7 +40,7 @@ class ComponentTest < Prawn::Component::TestCase
       end
     end
 
-    ArgumentComponent.new(text: "Argument").render_in(@document)
+    ArgumentComponent.new(text: "Argument").draw_in(@document)
 
     assert_document_includes @document, "Argument"
   end
@@ -52,7 +52,7 @@ class ComponentTest < Prawn::Component::TestCase
       end
     end
 
-    ContentComponent.new.render_in(@document) do |pdf|
+    ContentComponent.new.draw_in(@document) do |pdf|
       pdf.text "Additional content"
     end
 

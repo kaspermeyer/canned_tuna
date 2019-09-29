@@ -1,8 +1,39 @@
 # Prawn::Component
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/prawn/component`. To experiment with that code, run `bin/console` for an interactive prompt.
+> 🚧 Under construction. More documentation to come  🚧
 
-TODO: Delete this and the text above, and describe your gem
+Organizing content in Prawn gets notoriously difficult as the size and complexity of the document increases. This often leads to a junk drawer of helper methods and mixins that is hard to maintain.
+
+Components are an antidote to this approach. They encapsulate a self-contained piece of content which can be drawn in any document. This makes them easy to test and reuse.
+
+## Example
+```ruby
+class Box < Prawn::Component
+  template do |component, content|
+    bounding_box([0, cursor - 100],
+
+      # Component determines width and height
+      width: component.width, height: component.height) do
+
+      # Drawing additional content
+      content.call
+      transparent(0.5) { stroke_bounds }
+    end
+  end
+
+  attr_reader :width, :height
+
+  def initialize(width: 100, height: 100)
+    @width, @height = width, height
+  end
+end
+
+Prawn::Document.generate("box.pdf") do
+  component Box, width: 200, height: 100 do
+    text "Inside the box"
+  end
+end
+```
 
 ## Installation
 

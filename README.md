@@ -11,7 +11,6 @@ Components are an antidote to this approach. They encapsulate a self-contained p
 class Box < Prawn::Component
   template do |component, content|
     bounding_box([0, cursor - 100],
-
       # Component determines width and height
       width: component.width, height: component.height) do
 

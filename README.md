@@ -10,11 +10,7 @@ Components are an antidote to this approach. They encapsulate a self-contained p
 ```ruby
 class Box < Prawn::Component
   template do |component, content|
-    bounding_box([0, cursor - 100],
-      # Component determines width and height
-      width: component.width, height: component.height) do
-
-      # Drawing additional content
+    bounding_box([0, cursor - 100], width: component.width, height: component.height) do
       content.call
       transparent(0.5) { stroke_bounds }
     end

@@ -24,7 +24,7 @@ class Box < Prawn::Component
 end
 
 Prawn::Document.generate("box.pdf") do
-  component Box, width: 200, height: 100 do
+  draw Box, width: 200, height: 100 do
     text "Inside the box"
   end
 end

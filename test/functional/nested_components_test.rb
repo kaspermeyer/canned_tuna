@@ -3,17 +3,17 @@ require "test_helper"
 class NestedComponentsTest < Prawn::Component::TestCase
   test "nested components with additional content" do
     document = Prawn::Document.new {
-      component Header do
+      draw Header do
         text "Header"
       end
 
-      component Body do
-        component Section, text: "Primary text" do
+      draw Body do
+        draw Section, text: "Primary text" do
           text "Secondary text"
         end
       end
 
-      component Footer do
+      draw Footer do
         text "Footer"
       end
     }

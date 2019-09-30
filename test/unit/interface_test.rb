@@ -3,7 +3,7 @@ require "test_helper"
 class InterfaceTest < Prawn::Component::TestCase
   test "rendering a component" do
     document = Prawn::Document.new {
-      component BasicComponent
+      draw BasicComponent
     }
 
     assert_document_includes document, "Basic"
@@ -11,7 +11,7 @@ class InterfaceTest < Prawn::Component::TestCase
 
   test "rendering a component with arguments" do
     document = Prawn::Document.new {
-      component ArgumentComponent, text: "Argument"
+      draw ArgumentComponent, text: "Argument"
     }
 
     assert_document_includes document, "Argument"
@@ -19,7 +19,7 @@ class InterfaceTest < Prawn::Component::TestCase
 
   test "rendering a component with additional content" do
     document = Prawn::Document.new {
-      component ContentComponent do
+      draw ContentComponent do
         text "Content"
       end
     }

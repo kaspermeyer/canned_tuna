@@ -13,7 +13,23 @@ module Prawn
     end
 
     def draw_in pdf, &block
-      pdf.instance_exec(self, (block || proc {}), &self.class.template)
+      with_temporary_document(pdf) do
+        pdf.instance_exec(self, (block || proc {}), &self.class.template)
+      end
+    end
+
+    private
+
+    def lazy &block
+      return nil unless @document
+
+      @document.instance_eval(&block)
+    end
+
+    def with_temporary_document pdf
+      @document = pdf
+      yield
+      @document = nil
     end
   end
 end

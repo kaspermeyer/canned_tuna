@@ -4,6 +4,8 @@ require_relative "component/interface"
 
 module Prawn
   class Component
+    include Prawn::View
+
     def self.template &block
       if block_given?
         @template = block
@@ -14,7 +16,7 @@ module Prawn
 
     def draw_in pdf, &block
       with_temporary_document(pdf) do
-        pdf.instance_exec(self, (block || proc {}), &self.class.template)
+        instance_exec((block || -> {}), &self.class.template)
       end
     end
 

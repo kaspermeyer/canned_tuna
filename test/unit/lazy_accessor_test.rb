@@ -19,8 +19,8 @@ class LazyAccessorTest < Prawn::Component::TestCase
   end
 
   class LazyComponent < Prawn::Component
-    template do |component|
-      text "Current page is #{component.page_number}"
+    template do
+      text "Current page is #{page_number}"
     end
 
     def page_number

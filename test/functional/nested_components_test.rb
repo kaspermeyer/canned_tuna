@@ -8,7 +8,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
       end
 
       draw Body do
-        draw Section, text: "Primary text" do
+        draw Section, heading: "Primary text" do
           text "Secondary text"
         end
       end
@@ -26,7 +26,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
   class Header < Prawn::Component
     HEIGHT = 50
 
-    template do |_, content|
+    template do |content|
       bounding_box bounds.top_left, width: bounds.width, height: Header::HEIGHT do
         content.call
       end
@@ -34,7 +34,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
   end
 
   class Body < Prawn::Component
-    template do |_, content|
+    template do |content|
       width = bounds.width
       height = bounds.height - Footer::HEIGHT - Header::HEIGHT
 
@@ -47,22 +47,22 @@ class NestedComponentsTest < Prawn::Component::TestCase
   end
 
   class Section < Prawn::Component
-    template do |component, content|
-      text component.text
+    template do |content|
+      text heading
       content.call
     end
 
-    attr_reader :text
+    attr_reader :heading
 
-    def initialize text:
-      @text = text
+    def initialize heading:
+      @heading = heading
     end
   end
 
   class Footer < Prawn::Component
     HEIGHT = 20
 
-    template do |_, content|
+    template do |content|
       bounding_box [bounds.left, bounds.bottom], width: bounds.width, height: Footer::HEIGHT do
         content.call
       end

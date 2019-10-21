@@ -29,25 +29,25 @@ class ComponentTest < Prawn::Component::TestCase
 
   test "accessing component in template" do
     class ArgumentComponent < Prawn::Component
-      template do |component|
-        text component.text
+      template do
+        text heading
       end
 
-      attr_reader :text
+      attr_reader :heading
 
-      def initialize(text:)
-        @text = text
+      def initialize(heading:)
+        @heading = heading
       end
     end
 
-    ArgumentComponent.new(text: "Argument").draw_in(@document)
+    ArgumentComponent.new(heading: "Argument").draw_in(@document)
 
     assert_document_includes @document, "Argument"
   end
 
   test "rendering additional content" do
     class ContentComponent < Prawn::Component
-      template do |_, content|
+      template do |content|
         content.call(self)
       end
     end

@@ -11,7 +11,7 @@ class InterfaceTest < Prawn::Component::TestCase
 
   test "rendering a component with arguments" do
     document = Prawn::Document.new {
-      draw ArgumentComponent, text: "Argument"
+      draw ArgumentComponent, heading: "Argument"
     }
 
     assert_document_includes document, "Argument"
@@ -35,18 +35,18 @@ class InterfaceTest < Prawn::Component::TestCase
 
   class ArgumentComponent < Prawn::Component
     template do |component|
-      text component.text
+      text heading
     end
 
-    attr_reader :text
+    attr_reader :heading
 
-    def initialize(text:)
-      @text = text
+    def initialize(heading:)
+      @heading = heading
     end
   end
 
   class ContentComponent < Prawn::Component
-    template do |_, content|
+    template do |content|
       content.call
     end
   end

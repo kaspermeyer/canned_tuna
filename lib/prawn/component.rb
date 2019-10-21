@@ -16,7 +16,7 @@ module Prawn
 
     def draw_in pdf, &block
       with_temporary_document(pdf) do
-        instance_exec((block || -> {}), &self.class.template)
+        instance_exec((block || proc {}), &self.class.template)
       end
     end
 

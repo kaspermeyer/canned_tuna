@@ -22,12 +22,6 @@ module Prawn
 
     private
 
-    def lazy &block
-      return nil unless @document
-
-      @document.instance_eval(&block)
-    end
-
     def with_temporary_document pdf
       @document = pdf
       yield

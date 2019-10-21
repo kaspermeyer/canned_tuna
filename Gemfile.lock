@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    prawn-component (0.1.0)
+    prawn-component (0.0.1)
       prawn (~> 2.2)
 
 GEM

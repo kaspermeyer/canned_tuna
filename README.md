@@ -9,10 +9,10 @@ Components are an antidote to this approach. They encapsulate a self-contained p
 ## Example
 ```ruby
 class Box < Prawn::Component
-  template do |component, content|
-    bounding_box([0, cursor - 100], width: component.width, height: component.height) do
+  template do |content|
+    bounding_box([0, cursor - 100], width: width, height: height) do
       content.call
-      transparent(0.5) { stroke_bounds }
+      draw_border
     end
   end
 
@@ -20,6 +20,10 @@ class Box < Prawn::Component
 
   def initialize(width: 100, height: 100)
     @width, @height = width, height
+  end
+
+  def draw_border
+    transparent(0.5) { stroke_bounds }
   end
 end
 

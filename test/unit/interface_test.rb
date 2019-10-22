@@ -34,7 +34,7 @@ class InterfaceTest < Prawn::Component::TestCase
   end
 
   class ArgumentComponent < Prawn::Component
-    template do |component|
+    template do
       text heading
     end
 

@@ -27,7 +27,7 @@ class ComponentTest < Prawn::Component::TestCase
     assert_document_includes @document, "Basic"
   end
 
-  test "accessing component in template" do
+  test "component methods in template" do
     class ArgumentComponent < Prawn::Component
       template do
         text heading

@@ -35,7 +35,26 @@ end
 ```
 
 ## Outlets
-Components can define multiple content outlets.
+
+### Default outlet
+Components can define a single content outlet using the short-hand syntax.
+
+```ruby
+class Box < Prawn::Component
+  template do
+    outlet
+  end
+end
+
+Prawn::Document.generate("box.pdf") do
+  draw Box do
+    text "Inside the box"
+  end
+end
+```
+
+### Named outlets
+Components can define multiple content outlets by yielding a content object that provides hooks for naming and defining multiple outlets.
 
 ```ruby
 class Box < Prawn::Component
@@ -56,6 +75,27 @@ Prawn::Document.generate("outlets.pdf") do
     end
     content.outlet(:footer) do
       text "I am the footer"
+    end
+  end
+end
+```
+
+### Default content
+Components can define default content for their outlets
+
+```ruby
+class Box < Prawn::Component
+  template do
+    outlet(:header) { text "I am the header" }
+    outlet(:body)
+    outlet(:footer) { text "I am the footer" }
+  end
+end
+
+Prawn::Document.generate("outlets.pdf") do
+  draw Box do |content|
+    content.outlet(:body) do
+      text "I am the body"
     end
   end
 end

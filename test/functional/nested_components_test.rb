@@ -18,7 +18,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
       end
     }
 
-    ["Header", "Primary text", "Secondary text", "Footer"]. each do |text|
+    ["Header", "Primary text", "Secondary text", "Footer"].each do |text|
       assert_document_includes document, text
     end
   end

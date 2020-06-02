@@ -30,7 +30,7 @@ module Prawn
     end
 
     def outlet name = :default
-      @content.outlet_for(name).call
+      content.outlet_for(name).call
     end
 
     def with_temporary_document pdf

@@ -8,8 +8,10 @@ class NestedComponentsTest < Prawn::Component::TestCase
       end
 
       draw Body do
-        draw Section, heading: "Primary text" do
-          text "Secondary text"
+        draw Section, heading: "Primary text" do |content|
+          content.outlet(:secondary) do
+            text "Secondary text"
+          end
         end
       end
 
@@ -49,7 +51,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
   class Section < Prawn::Component
     template do
       text heading
-      outlet
+      outlet(:secondary)
     end
 
     attr_reader :heading

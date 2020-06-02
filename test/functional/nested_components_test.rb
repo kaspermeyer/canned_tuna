@@ -26,30 +26,30 @@ class NestedComponentsTest < Prawn::Component::TestCase
   class Header < Prawn::Component
     HEIGHT = 50
 
-    template do |content|
+    template do
       bounding_box bounds.top_left, width: bounds.width, height: Header::HEIGHT do
-        content.call
+        outlet
       end
     end
   end
 
   class Body < Prawn::Component
-    template do |content|
+    template do
       width = bounds.width
       height = bounds.height - Footer::HEIGHT - Header::HEIGHT
 
       bounding_box [bounds.left, bounds.top - Footer::HEIGHT], width: width, height: height do
         pad_top(5) do
-          content.call
+          outlet
         end
       end
     end
   end
 
   class Section < Prawn::Component
-    template do |content|
+    template do
       text heading
-      content.call
+      outlet
     end
 
     attr_reader :heading
@@ -62,9 +62,9 @@ class NestedComponentsTest < Prawn::Component::TestCase
   class Footer < Prawn::Component
     HEIGHT = 20
 
-    template do |content|
+    template do
       bounding_box [bounds.left, bounds.bottom], width: bounds.width, height: Footer::HEIGHT do
-        content.call
+        outlet
       end
     end
   end

@@ -46,8 +46,8 @@ class InterfaceTest < Prawn::Component::TestCase
   end
 
   class ContentComponent < Prawn::Component
-    template do |content|
-      content.call
+    template do
+      outlet
     end
   end
 end

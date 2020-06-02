@@ -44,18 +44,4 @@ class ComponentTest < Prawn::Component::TestCase
 
     assert_document_includes @document, "Argument"
   end
-
-  test "rendering additional content" do
-    class ContentComponent < Prawn::Component
-      template do |content|
-        content.call(self)
-      end
-    end
-
-    ContentComponent.new.draw_in(@document) do |pdf|
-      pdf.text "Additional content"
-    end
-
-    assert_document_includes @document, "Additional content"
-  end
 end

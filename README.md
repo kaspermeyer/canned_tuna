@@ -9,9 +9,9 @@ Components are an antidote to this approach. They encapsulate a self-contained p
 ## Example
 ```ruby
 class Box < Prawn::Component
-  template do |content|
+  template do
     bounding_box([0, cursor - 100], width: width, height: height) do
-      content.call
+      outlet
       draw_border
     end
   end
@@ -30,6 +30,33 @@ end
 Prawn::Document.generate("box.pdf") do
   draw Box, width: 200, height: 100 do
     text "Inside the box"
+  end
+end
+```
+
+## Outlets
+Components can define multiple content outlets.
+
+```ruby
+class Box < Prawn::Component
+  template do
+    outlet(:header)
+    outlet(:body)
+    outlet(:footer)
+  end
+end
+
+Prawn::Document.generate("outlets.pdf") do
+  draw Box do |content|
+    content.outlet(:header) do
+      text "I am the header"
+    end
+    content.outlet(:body) do
+      text "I am the body"
+    end
+    content.outlet(:footer) do
+      text "I am the footer"
+    end
   end
 end
 ```

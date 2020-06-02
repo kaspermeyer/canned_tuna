@@ -71,13 +71,17 @@ class OutletTest < Prawn::Component::TestCase
     class DefaultContentsComponent < Prawn::Component
       template do
         outlet(:header) { text "Header" }
-        outlet(:body) { text "Body" }
+        outlet(:body)
         outlet(:footer) { text "Footer" }
       end
     end
 
     @document.instance_exec do
-      draw DefaultContentsComponent
+      draw DefaultContentsComponent do |content|
+        content.outlet(:body) do
+          text "Body"
+        end
+      end
     end
 
     ["Header", "Body", "Footer"].each do |outlet_text|

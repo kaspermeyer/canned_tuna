@@ -8,8 +8,8 @@ module Prawn
         instance_exec(self, &@block)
       end
 
-      def outlet_for name
-        @outlets[name] || proc {}
+      def outlet_for name, &default_content
+        @outlets[name] || default_content || proc {}
       end
 
       def outlet name = :default, &block

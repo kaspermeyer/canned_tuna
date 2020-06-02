@@ -29,8 +29,8 @@ module Prawn
       @content ||= ContentProxy.new
     end
 
-    def outlet name = :default
-      content.outlet_for(name).call
+    def outlet name = :default, &default_content
+      content.outlet_for(name, &default_content).call
     end
 
     def with_temporary_document pdf
@@ -40,14 +40,14 @@ module Prawn
     end
 
     def register_outlets &block
-      content_block = block || proc {}
+      return unless block_given?
 
       # Multiple content outlets
-      if content_block.arity > 0
-        instance_exec(content, &content_block)
+      if block.arity > 0
+        instance_exec(content, &block)
       # Default content outlet (short-hand syntax)
       else
-        content.outlet(:default, &content_block)
+        content.outlet(:default, &block)
       end
     end
   end

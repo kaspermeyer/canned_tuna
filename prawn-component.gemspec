@@ -30,6 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "minitest-focus"
   spec.add_development_dependency "pdf-inspector", "~> 1.3"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "standard", "~> 0.1.4"
 end

@@ -1,4 +1,5 @@
 require "minitest/autorun"
+require "minitest/focus"
 
 module Prawn
   class Component

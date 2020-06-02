@@ -1,6 +1,6 @@
 # Prawn::Component
 
-> 🚧 Under construction. More documentation to come  🚧
+> 🚧 Under construction. Expect unstable API on versions less than 0.1.0  🚧
 
 Organizing content in Prawn gets notoriously difficult as the size and complexity of the document increases. This often leads to a junk drawer of helper methods and mixins that is hard to maintain.
 

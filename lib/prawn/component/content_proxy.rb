@@ -1,11 +1,8 @@
 module Prawn
   class Component
     class ContentProxy
-      def initialize &block
-        @block = block || proc {}
+      def initialize
         @outlets = {}
-
-        instance_exec(self, &@block)
       end
 
       def outlet_for name, &default_content

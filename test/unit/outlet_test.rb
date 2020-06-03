@@ -1,6 +1,6 @@
 require "test_helper"
 
-class OutletTest < Prawn::Component::TestCase
+class OutletTest < CannedTuna::TestCase
   test "rendering content with outlet" do
     document = Prawn::Document.new {
       draw ContentComponent do
@@ -55,13 +55,13 @@ class OutletTest < Prawn::Component::TestCase
     end
   end
 
-  class ContentComponent < Prawn::Component
+  class ContentComponent < CannedTuna::Component
     template do
       outlet
     end
   end
 
-  class NamedOutletComponent < Prawn::Component
+  class NamedOutletComponent < CannedTuna::Component
     template do
       outlet(:header)
       outlet(:body)
@@ -69,7 +69,7 @@ class OutletTest < Prawn::Component::TestCase
     end
   end
 
-  class DefaultContentComponent < Prawn::Component
+  class DefaultContentComponent < CannedTuna::Component
     template do
       outlet do
         text "Default content"
@@ -77,7 +77,7 @@ class OutletTest < Prawn::Component::TestCase
     end
   end
 
-  class DefaultContentsComponent < Prawn::Component
+  class DefaultContentsComponent < CannedTuna::Component
     template do
       outlet(:header) { text "Header" }
       outlet(:body)

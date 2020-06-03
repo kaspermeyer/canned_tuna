@@ -1,6 +1,6 @@
-require_relative "../lib/prawn/component"
+require_relative "../lib/canned_tuna"
 
-class Box < Prawn::Component
+class Box < CannedTuna::Component
   template do
     bounding_box([0, cursor - 100], width: width, height: height) do
       outlet

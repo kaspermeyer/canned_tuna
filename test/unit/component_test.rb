@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ComponentTest < Prawn::Component::TestCase
+class ComponentTest < CannedTuna::TestCase
   setup do
     @document = Prawn::Document.new
   end
@@ -21,19 +21,19 @@ class ComponentTest < Prawn::Component::TestCase
     assert_document_includes @document, "Argument"
   end
 
-  class TemplateComponent < Prawn::Component
+  class TemplateComponent < CannedTuna::Component
     template do
       "Inside the template"
     end
   end
 
-  class BasicComponent < Prawn::Component
+  class BasicComponent < CannedTuna::Component
     template do
       text "Basic"
     end
   end
 
-  class ArgumentComponent < Prawn::Component
+  class ArgumentComponent < CannedTuna::Component
     template do
       text heading
     end

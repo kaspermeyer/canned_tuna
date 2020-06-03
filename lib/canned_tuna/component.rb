@@ -1,9 +1,4 @@
-require "prawn"
-require_relative "component/version"
-require_relative "component/interface"
-require_relative "component/content_proxy"
-
-module Prawn
+module CannedTuna
   class Component
     include Prawn::View
 

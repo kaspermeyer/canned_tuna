@@ -1,6 +1,6 @@
 require "test_helper"
 
-class InterfaceTest < Prawn::Component::TestCase
+class InterfaceTest < CannedTuna::TestCase
   test "rendering a component" do
     document = Prawn::Document.new {
       draw BasicComponent
@@ -27,13 +27,13 @@ class InterfaceTest < Prawn::Component::TestCase
     assert_document_includes document, "Content"
   end
 
-  class BasicComponent < Prawn::Component
+  class BasicComponent < CannedTuna::Component
     template do
       text "Basic"
     end
   end
 
-  class ArgumentComponent < Prawn::Component
+  class ArgumentComponent < CannedTuna::Component
     template do
       text heading
     end
@@ -45,7 +45,7 @@ class InterfaceTest < Prawn::Component::TestCase
     end
   end
 
-  class ContentComponent < Prawn::Component
+  class ContentComponent < CannedTuna::Component
     template do
       outlet
     end

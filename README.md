@@ -1,4 +1,4 @@
-# Prawn::Component
+# Canned Tuna
 
 > 🚧 Under construction. Expect unstable API on versions less than 0.1.0  🚧
 
@@ -8,7 +8,7 @@ Components are an antidote to this approach. They encapsulate a self-contained p
 
 ## Example
 ```ruby
-class Box < Prawn::Component
+class Box < CannedTuna::Component
   template do
     bounding_box([0, cursor - 100], width: width, height: height) do
       outlet
@@ -40,7 +40,7 @@ end
 Components can define a single content outlet using the short-hand syntax.
 
 ```ruby
-class Box < Prawn::Component
+class Box < CannedTuna::Component
   template do
     outlet
   end
@@ -57,7 +57,7 @@ end
 Components can define multiple content outlets by yielding a content object that provides hooks for naming and defining multiple outlets.
 
 ```ruby
-class Box < Prawn::Component
+class Box < CannedTuna::Component
   template do
     outlet(:header)
     outlet(:body)
@@ -84,7 +84,7 @@ end
 Components can define default content for their outlets
 
 ```ruby
-class Box < Prawn::Component
+class Box < CannedTuna::Component
   template do
     outlet(:header) { text "I am the header" }
     outlet(:body)
@@ -106,7 +106,7 @@ end
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'prawn-component'
+gem 'canned_tuna'
 ```
 
 And then execute:
@@ -115,7 +115,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install prawn-component
+    $ gem install canned_tuna
 
 ## Development
 
@@ -125,7 +125,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kaspermeyer/prawn-component.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kaspermeyer/canned_tuna.
 
 ## License
 

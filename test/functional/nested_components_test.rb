@@ -1,6 +1,6 @@
 require "test_helper"
 
-class NestedComponentsTest < Prawn::Component::TestCase
+class NestedComponentsTest < CannedTuna::TestCase
   test "nested components with additional content" do
     document = Prawn::Document.new {
       draw Header do
@@ -25,7 +25,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
     end
   end
 
-  class Header < Prawn::Component
+  class Header < CannedTuna::Component
     HEIGHT = 50
 
     template do
@@ -35,7 +35,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
     end
   end
 
-  class Body < Prawn::Component
+  class Body < CannedTuna::Component
     template do
       width = bounds.width
       height = bounds.height - Footer::HEIGHT - Header::HEIGHT
@@ -48,7 +48,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
     end
   end
 
-  class Section < Prawn::Component
+  class Section < CannedTuna::Component
     template do
       text heading
       outlet(:secondary)
@@ -61,7 +61,7 @@ class NestedComponentsTest < Prawn::Component::TestCase
     end
   end
 
-  class Footer < Prawn::Component
+  class Footer < CannedTuna::Component
     HEIGHT = 20
 
     template do

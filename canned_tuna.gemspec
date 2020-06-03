@@ -1,16 +1,16 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "prawn/component/version"
+require "canned_tuna/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "prawn-component"
-  spec.version = Prawn::Component::VERSION
+  spec.name = "canned_tuna"
+  spec.version = CannedTuna::VERSION
   spec.authors = ["Kasper Meyer"]
   spec.email = ["hi@kaspermeyer.com"]
 
   spec.summary = "Components for Prawn"
   spec.description = "Modular components to encapsulate data and markup in Prawn"
-  spec.homepage = "https://github.com/kaspermeyer/prawn-component"
+  spec.homepage = "https://github.com/kaspermeyer/canned_tuna"
   spec.license = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage

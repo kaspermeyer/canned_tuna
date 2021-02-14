@@ -6,6 +6,22 @@ Organizing content in Prawn gets notoriously difficult as the size and complexit
 
 Components are an antidote to this approach. They encapsulate a self-contained piece of content which can be drawn in any document. This makes them easy to test and reuse.
 
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'canned_tuna'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install canned_tuna
+
 ## Example
 ```ruby
 class Box < CannedTuna::Component
@@ -37,27 +53,27 @@ end
 ## Outlets
 
 ### Default outlet
-Components can define a single content outlet using the short-hand syntax.
+Components can define a single content outlet by using the `outlet` helper inside the template:
 
 ```ruby
-class Box < CannedTuna::Component
+class Panel < CannedTuna::Component
   template do
     outlet
   end
 end
 
-Prawn::Document.generate("box.pdf") do
-  draw Box do
-    text "Inside the box"
+Prawn::Document.generate("single_outlet.pdf") do
+  draw Panel do
+    text "Inside the panel"
   end
 end
 ```
 
 ### Named outlets
-Components can define multiple content outlets by yielding a content object that provides hooks for naming and defining multiple outlets.
+Components can define multiple content outlets by passing their names to the `outlet` helper:
 
 ```ruby
-class Box < CannedTuna::Component
+class Panel < CannedTuna::Component
   template do
     outlet(:header)
     outlet(:body)
@@ -65,8 +81,8 @@ class Box < CannedTuna::Component
   end
 end
 
-Prawn::Document.generate("outlets.pdf") do
-  draw Box do |content|
+Prawn::Document.generate("multiple_outlets.pdf") do
+  draw Panel do |content|
     content.outlet(:header) do
       text "I am the header"
     end
@@ -81,10 +97,10 @@ end
 ```
 
 ### Default content
-Components can define default content for their outlets
+Components can define default content for their outlets by yielding a block to the `outlet` helper:
 
 ```ruby
-class Box < CannedTuna::Component
+class Panel < CannedTuna::Component
   template do
     outlet(:header) { text "I am the header" }
     outlet(:body)
@@ -92,30 +108,14 @@ class Box < CannedTuna::Component
   end
 end
 
-Prawn::Document.generate("outlets.pdf") do
-  draw Box do |content|
+Prawn::Document.generate("default_content.pdf") do
+  draw Panel do |content|
     content.outlet(:body) do
       text "I am the body"
     end
   end
 end
 ```
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'canned_tuna'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install canned_tuna
 
 ## Development
 
